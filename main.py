@@ -2,16 +2,41 @@
 import os
 import PySimpleGUI as sg
 
-sg.theme('DarkTeal2')
-layout = [[sg.T("")], [sg.Text("Choose a folder: "), sg.Input(key="-IN2-" ,change_submits=True), sg.FolderBrowse(key="-IN-")],[sg.Button("Submit")]]
-window = sg.Window('My File Browser', layout, size=(600,150))
-while True:
-    event, values = window.read()
-    print(values["-IN2-"])
-    if event == sg.WIN_CLOSED or event=="Exit":
-        break
-    elif event == "Submit":
-        print(values["-IN-"])
+# sg.theme('DarkTeal2')
+# layout = [[sg.T("")], [sg.Text("Choose a folder: "), sg.Input(key="-IN2-" ,change_submits=True), sg.FolderBrowse(key="-IN-")],[sg.Button("Submit")]]
+# window = sg.Window('My File Browser', layout, size=(600,150))
+# while True:
+#     event, values = window.read()
+#     print(values["-IN2-"])
+#     if event == sg.WIN_CLOSED or event=="Exit":
+#         break
+#     elif event == "Submit":
+#         print(values["-IN-"])
+
+
+def select_folder():
+    sg.theme('DarkTeal2')
+    layout = [[sg.T("")],
+              [sg.Text("Choose a folder: "), sg.Input(key="-IN2-", change_submits=True), sg.FolderBrowse(key="-IN-")],
+              [sg.Button("Submit")]]
+    window = sg.Window('My File Browser', layout, size=(600, 150))
+    while True:
+        event, values = window.read()
+
+        if event == sg.WIN_CLOSED or event == "Exit":
+            break
+        elif event == "Submit":
+            print(values["-IN-"])
+    return values
+
+
+folder = select_folder()
+print(folder)
+
+
+
+
+
 
 
 # def select_folder():
